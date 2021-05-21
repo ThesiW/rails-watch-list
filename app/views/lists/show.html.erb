@@ -1,1 +1,24 @@
-show.html.erb
+<div class="container">
+  <body class="mt-3 pt-3 d-flex justify-content-center">
+    <div class="col-12 col-md-6 offset-md-3">
+      <h1 class="d-flex justify-content-center"><%= @list.name %></h1>
+      <p class="row d-flex justify-content-center">
+        <%= link_to "Back to my list", lists_path %>
+      </p>
+      <p class="row d-flex justify-content-center">
+      <%= link_to "Add a movie to my list", new_list_bookmark_path(@list) %>
+      </p>
+      <p class="row d-flex justify-content-center">
+        <ul class="list-unstyled">
+          <% @list.bookmarks.each do |bookmark| %>
+            <li><p class="row d-flex justify-content-center"><strong><%= bookmark.movie.title %></strong></p>
+              <p class="row d-flex justify-content-center"><%= bookmark.comment %></p>
+              <p class="row d-flex justify-content-center"><%= link_to "DELETE BOOKMARK", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %></p>
+            </li>
+          <% end %>
+        </ul>
+      </p>
+    </div>
+  </body>
+
+</div>
